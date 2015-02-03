@@ -1,0 +1,25 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Wed, 24 Apr 2013 14:48:54 +0300
+Subject: Fedora: enable debchange (alias dch)
+
+Gbp-Rpm: If 0%{?fedora_version}
+
+Change-Id: Ib374d15d2a532c27b6fb95f41093e9f4b539f9d4
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ scripts/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/Makefile b/scripts/Makefile
+index 53a4db4..e0a5b4a 100644
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -20,7 +20,7 @@ CFLAGS += -std=c99
+ LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS)
+ CWRAPPERS = debpkg-wrapper
+ ALL_SCRIPTS = $(patsubst %.pl,%,$(PL_FILES)) $(patsubst %.sh,%,$(SH_FILES))
+-DISABLED_SCRIPTS = desktop2menu debchange debcheckout debdiff debuild dget
++DISABLED_SCRIPTS = desktop2menu debcheckout debdiff debuild dget
+ SCRIPTS = $(filter-out $(DISABLED_SCRIPTS),$(ALL_SCRIPTS))
+ COMPL_FILES := $(wildcard *.bash_completion)
+ COMPLETION = $(patsubst %.bash_completion,devscripts.%,$(COMPL_FILES))
