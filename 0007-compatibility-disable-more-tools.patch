@@ -1,0 +1,40 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Wed, 24 Apr 2013 14:48:54 +0300
+Subject: compatibility: disable more tools
+
+Compatibility with older dpkg.
+
+Gbp-Rpm: If 0%{?fedora_version}
+
+Change-Id: I3088785aa46b4ef5c636b7676926274d474d23a7
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ Makefile.common  | 4 ++--
+ scripts/Makefile | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.common b/Makefile.common
+index 9118f33..a548783 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -1,5 +1,5 @@
+-GEN_MAN1S := bts.1 build-rdeps.1 chdist.1 dcontrol.1 debcheckout.1 debcommit.1 \
+-	     deb-reversion.1 dget.1 licensecheck.1 mass-bug.1 \
++GEN_MAN1S := bts.1 build-rdeps.1 chdist.1 dcontrol.1 debcommit.1 \
++	     deb-reversion.1 licensecheck.1 mass-bug.1 \
+ 	     mk-build-deps.1 namecheck.1 rmadison.1 svnpath.1 tagpending.1 \
+ 	     transition-check.1
+ 
+diff --git a/scripts/Makefile b/scripts/Makefile
+index 227c0f5..53a4db4 100644
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -20,7 +20,7 @@ CFLAGS += -std=c99
+ LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS)
+ CWRAPPERS = debpkg-wrapper
+ ALL_SCRIPTS = $(patsubst %.pl,%,$(PL_FILES)) $(patsubst %.sh,%,$(SH_FILES))
+-DISABLED_SCRIPTS = desktop2menu
++DISABLED_SCRIPTS = desktop2menu debchange debcheckout debdiff debuild dget
+ SCRIPTS = $(filter-out $(DISABLED_SCRIPTS),$(ALL_SCRIPTS))
+ COMPL_FILES := $(wildcard *.bash_completion)
+ COMPLETION = $(patsubst %.bash_completion,devscripts.%,$(COMPL_FILES))
