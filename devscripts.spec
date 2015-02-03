@@ -24,6 +24,7 @@ Patch4:     0005-Makefile-fix-permissions-of-README-file.patch
 Patch5:     0006-compatibility-remove-desktop2menu-tool.patch
 Patch6:     0007-compatibility-disable-more-tools.patch
 Patch7:     0008-Disable-tests.patch
+Patch8:     0009-Fedora-HACK-fix-debchange.patch
 %if ! 0%{?suse_fixes_only}
 BuildRequires:  libxslt
 BuildRequires:  python-devel
@@ -197,6 +198,10 @@ Provides missing symlinks and requirements for Debian devscripts.
 %endif
 # 0008-Disable-tests.patch
 %patch7 -p1
+# 0009-Fedora-HACK-fix-debchange.patch
+%if 0%{?fedora_version} && 0%{?fedora_version} < 19
+%patch8 -p1
+%endif
 cp %{SOURCE1} .
 
 
