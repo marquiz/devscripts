@@ -1,0 +1,22 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Thu, 25 Apr 2013 10:40:32 +0300
+Subject: Disable tests
+
+Change-Id: Ia1a22327e45e7f3d190cdb892a1c17a038f864d9
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ test/Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/Makefile b/test/Makefile
+index 2e827dc..0245417 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -1,4 +1,7 @@
+ test:
++	@echo "Tests disabled"
++
++test_:
+ 	./test_checkbashisms
+ 	./test_dd-list
+ 	./test_debchange
