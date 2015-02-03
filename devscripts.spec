@@ -28,14 +28,21 @@ Patch8:     0009-Fedora-HACK-fix-debchange.patch
 Patch9:     0010-Fedora-enable-debchange-alias-dch.patch
 %if ! 0%{?suse_fixes_only}
 BuildRequires:  libxslt
-BuildRequires:  python-devel
 BuildRequires:  python-setuptools
-BuildRequires:  zlib-devel
+%if 0%{?fedora} < 19
 BuildRequires:  docbook-xsl-stylesheets
+%else
+BuildRequires:  docbook-style-xsl
+%endif
+BuildRequires:  perl(Pod::Checker)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Date::Parse)
-%if 0%{?fedora}
+%if 0%{?fedora} > 10 && 0%{?fedora} < 19
 BuildRequires:  dpkg-devel
+%endif
+%if 0%{?fedora} >= 19
+BuildRequires:  dpkg-perl
+Requires:       dpkg-dev
 %endif
 Requires:       dpkg
 %endif
