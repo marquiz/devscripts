@@ -1,0 +1,39 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Wed, 24 Apr 2013 12:42:02 +0300
+Subject: compatibility: remove desktop2menu tool
+
+Relaxes requirements, the perl File::DesktopEntry module is not requires
+after this.
+
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ Makefile.common  | 2 +-
+ scripts/Makefile | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.common b/Makefile.common
+index ffafae2..9118f33 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -1,5 +1,5 @@
+ GEN_MAN1S := bts.1 build-rdeps.1 chdist.1 dcontrol.1 debcheckout.1 debcommit.1 \
+-	     deb-reversion.1 desktop2menu.1 dget.1 licensecheck.1 mass-bug.1 \
++	     deb-reversion.1 dget.1 licensecheck.1 mass-bug.1 \
+ 	     mk-build-deps.1 namecheck.1 rmadison.1 svnpath.1 tagpending.1 \
+ 	     transition-check.1
+ 
+diff --git a/scripts/Makefile b/scripts/Makefile
+index ba04dcc..227c0f5 100644
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -19,7 +19,9 @@ CFLAGS := $(shell dpkg-buildflags --get CFLAGS)
+ CFLAGS += -std=c99
+ LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS)
+ CWRAPPERS = debpkg-wrapper
+-SCRIPTS = $(patsubst %.pl,%,$(PL_FILES)) $(patsubst %.sh,%,$(SH_FILES))
++ALL_SCRIPTS = $(patsubst %.pl,%,$(PL_FILES)) $(patsubst %.sh,%,$(SH_FILES))
++DISABLED_SCRIPTS = desktop2menu
++SCRIPTS = $(filter-out $(DISABLED_SCRIPTS),$(ALL_SCRIPTS))
+ COMPL_FILES := $(wildcard *.bash_completion)
+ COMPLETION = $(patsubst %.bash_completion,devscripts.%,$(COMPL_FILES))
+ 

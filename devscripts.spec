@@ -16,6 +16,7 @@ Patch1:         0002-Makefile-Fix-install-layout-and-prefix.patch
 Patch2:         0003-Makefile-configurable-xsl-stylesheet-path-for-manpag.patch
 Patch3:         0004-Makefile-disable-manpage-translations.patch
 Patch4:         0005-Makefile-fix-permissions-of-README-file.patch
+Patch5:         0006-compatibility-remove-desktop2menu-tool.patch
 BuildRequires:  libxslt
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
@@ -168,6 +169,8 @@ from Debian mailing lists using exim, procmail, etc.
 %patch3 -p1
 # 0005-Makefile-fix-permissions-of-README-file.patch
 %patch4 -p1
+# 0006-compatibility-remove-desktop2menu-tool.patch
+%patch5 -p1
 
 
 %build
