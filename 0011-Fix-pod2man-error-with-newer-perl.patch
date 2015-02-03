@@ -1,0 +1,26 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Fri, 12 Sep 2014 15:23:42 +0300
+Subject: Fix pod2man error with newer perl
+
+Newer perl doesn't correctly cope with numerical lists whose numbering
+start from 0.
+
+Change-Id: I65574d7b74bf7ad75616d9406de4055a201586ad
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ scripts/transition-check.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/transition-check.pl b/scripts/transition-check.pl
+index 81a3d28..6ee8bed 100755
+--- a/scripts/transition-check.pl
++++ b/scripts/transition-check.pl
+@@ -63,7 +63,7 @@ be involved in a transition.
+ Either B<--help> or B<--version> was used, or none of the packages examined
+ was involved in a transition.
+ 
+-=item 1
++=item 1Z<>
+ 
+ At least one package examined is involved in a current transition.
+ 

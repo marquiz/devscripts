@@ -32,6 +32,7 @@ Patch6:     0007-compatibility-disable-more-tools.patch
 Patch7:     0008-Disable-tests.patch
 Patch8:     0009-Fedora-HACK-fix-debchange.patch
 Patch9:     0010-Fedora-enable-debchange-alias-dch.patch
+Patch10:    0011-Fix-pod2man-error-with-newer-perl.patch
 %if ! 0%{?fixes_only}
 BuildRequires:  libxslt
 BuildRequires:  python-setuptools
@@ -222,6 +223,8 @@ Provides missing symlinks and requirements for Debian devscripts.
 %if 0%{?fedora_version}
 %patch9 -p1
 %endif
+# 0011-Fix-pod2man-error-with-newer-perl.patch
+%patch10 -p1
 cp %{SOURCE1} .
 
 
