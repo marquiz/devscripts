@@ -1,0 +1,22 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Wed, 24 Apr 2013 10:57:00 +0300
+Subject: Makefile: fix permissions of README file
+
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ca9f7b0..edf5579 100644
+--- a/Makefile
++++ b/Makefile
+@@ -43,7 +43,7 @@ test: test_test test_scripts
+ install: all install_scripts
+ 	cp -a $(PERL_MODULES) $(DESTDIR)$(PERLMOD_DIR)
+ 	cp $(EXAMPLES) $(DESTDIR)$(EXAMPLES_DIR)
+-	install -D README $(DESTDIR)$(DOCDIR)/README
++	install -D -m644 README $(DESTDIR)$(DOCDIR)/README
+ 	install -dD $(DESTDIR)$(MAN1DIR)
+ 	cp doc/*.1 $(DESTDIR)$(MAN1DIR)
+ 	ln -sf edit-patch.1 $(DESTDIR)$(MAN1DIR)/add-patch.1
