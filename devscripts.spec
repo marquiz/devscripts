@@ -43,12 +43,14 @@ BuildRequires:  docbook-style-xsl
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Pod::Checker)
-%if 0%{?fedora} > 10 && 0%{?fedora} < 19
+%if 0%{?fedora}
+%if 0%{?fedora} < 19
 BuildRequires:  dpkg-devel
-%endif
-%if 0%{?fedora} >= 19
+%else
+BuildRequires:  dpkg-dev
 BuildRequires:  dpkg-perl
 Requires:       dpkg-dev
+%endif
 %endif
 Requires:       dpkg
 %endif
