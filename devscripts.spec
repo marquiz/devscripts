@@ -36,7 +36,7 @@ Patch10:    0011-Fix-pod2man-error-with-newer-perl.patch
 %if ! 0%{?fixes_only}
 BuildRequires:  libxslt
 BuildRequires:  python-setuptools
-%if 0%{?fedora} < 19
+%if  0%{?fedora} && 0%{?fedora} < 19
 BuildRequires:  docbook-xsl-stylesheets
 %else
 BuildRequires:  docbook-style-xsl
