@@ -1,3 +1,6 @@
+* Thu Mar 06 2014 Markus Lehtonen <markus.lehtonen@linux.intel.com> tizen-tools/2.12.6-20140306
+- Support for Fedora 20
+
 * Wed Apr 24 2013 Markus Lehtonen <markus.lehtonen@linux.intel.com> 2.12.6
 - Initial RPM packaging
 
