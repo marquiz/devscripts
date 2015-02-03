@@ -27,7 +27,8 @@ BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Date::Parse)
 %if 0%{?suse_version}
 BuildRequires:  dpkg-dev
-%else
+%endif
+%if 0%{?fedora}
 BuildRequires:  dpkg-devel
 %endif
 Requires:       dpkg
