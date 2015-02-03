@@ -1,6 +1,6 @@
 %define with_extra_symlinks 1
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} || 0%{?fedora} > 19
 %define fixes_only 1
 # For openSUSE 12.2 we only need the extra dependencies, no files
 %if 0%{?suse_version} && 0%{?suse_version} < 1220
