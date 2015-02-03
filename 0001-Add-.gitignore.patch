@@ -1,0 +1,17 @@
+From: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+Date: Wed, 24 Apr 2013 09:28:30 +0300
+Subject: Add .gitignore
+
+Signed-off-by: Markus Lehtonen <markus.lehtonen@linux.intel.com>
+---
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..7718456
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1 @@
++obs
