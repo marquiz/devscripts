@@ -1,5 +1,11 @@
+%define with_extra_symlinks 1
+
 %if 0%{?suse_version}
-%define suse_fixes_only 1
+%define fixes_only 1
+# For openSUSE 12.2 we only need the extra dependencies, no files
+%if 0%{?suse_version} && 0%{?suse_version} < 1220
+%define with_extra_symlinks 0
+%endif
 %endif
 
 Name:           devscripts
@@ -26,7 +32,7 @@ Patch6:     0007-compatibility-disable-more-tools.patch
 Patch7:     0008-Disable-tests.patch
 Patch8:     0009-Fedora-HACK-fix-debchange.patch
 Patch9:     0010-Fedora-enable-debchange-alias-dch.patch
-%if ! 0%{?suse_fixes_only}
+%if ! 0%{?fixes_only}
 BuildRequires:  libxslt
 BuildRequires:  python-setuptools
 %if 0%{?fedora} < 19
@@ -172,7 +178,7 @@ brackets afterwards:
 Also included are a set of example mail filters for filtering mail
 from Debian mailing lists using exim, procmail, etc.
 
-%if 0%{?suse_fixes_only}
+%if 0%{?fixes_only}
 %package fixes
 License:        GPL-2.0+
 Summary:        Fixes for Debian devscripts
@@ -218,7 +224,7 @@ cp %{SOURCE1} .
 
 
 %build
-%if ! 0%{?suse_fixes_only}
+%if ! 0%{?fixes_only}
 make %{?_smp_mflags} \
     DOCDIR=%{_docdir}/%{name} \
     MAN_XSL_STYLESHEET=%{_man_xsl_stylesheet}
@@ -226,14 +232,14 @@ make %{?_smp_mflags} \
 
 
 %install
-%if ! 0%{?suse_fixes_only}
+%if ! 0%{?fixes_only}
 %make_install \
     DOCDIR=%{_docdir}/%{name} \
     MAN_XSL_STYLESHEET=%{_man_xsl_stylesheet}
 %endif
 
-# Create symlinks for binaries, but not for -fixes subpkg on openSUSE 12.2
-%if ! (0%{?suse_fixes_only} && 0%{?suse_version} == 1220)
+# Create symlinks for binaries
+%if %{with_extra_symlinks}
 install -d %{buildroot}%{_bindir}
 ln -s cvs-debi %{buildroot}%{_bindir}/cvs-debc
 ln -s debchange %{buildroot}%{_bindir}/dch
@@ -242,7 +248,7 @@ ln -s pts-subscribe %{buildroot}%{_bindir}/pts-unsubscribe
 %endif
 
 
-%if ! 0%{?suse_fixes_only}
+%if ! 0%{?fixes_only}
 %files
 %defattr(-,root,root)
 %doc debian/copyright
@@ -260,7 +266,7 @@ ln -s pts-subscribe %{buildroot}%{_bindir}/pts-unsubscribe
 %files fixes
 %defattr(-,root,root)
 %doc README.fixes
-%if 0%{?suse_version} < 1220
+%if %{with_extra_symlinks}
 %{_bindir}/*
 %endif
 
