@@ -34,9 +34,9 @@ BuildRequires:  docbook-xsl-stylesheets
 %else
 BuildRequires:  docbook-style-xsl
 %endif
-BuildRequires:  perl(Pod::Checker)
-BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Date::Parse)
+BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  perl(Pod::Checker)
 %if 0%{?fedora} > 10 && 0%{?fedora} < 19
 BuildRequires:  dpkg-devel
 %endif
@@ -46,8 +46,8 @@ Requires:       dpkg-dev
 %endif
 Requires:       dpkg
 %endif
-Requires:       perl(LWP::UserAgent)
 Requires:       perl(Date::Parse)
+Requires:       perl(LWP::UserAgent)
 
 %if 0%{?suse_version}
 %define _man_xsl_stylesheet /usr/share/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
@@ -174,11 +174,11 @@ from Debian mailing lists using exim, procmail, etc.
 
 %if 0%{?suse_fixes_only}
 %package fixes
-Summary:    Fixes for Debian devscripts
-License:    GPL-2.0+
-Requires:   devscripts
-Requires:   perl(LWP::UserAgent)
-Requires:   perl(Date::Parse)
+License:        GPL-2.0+
+Summary:        Fixes for Debian devscripts
+Requires:       devscripts
+Requires:       perl(Date::Parse)
+Requires:       perl(LWP::UserAgent)
 
 %description fixes
 Provides missing symlinks and requirements for Debian devscripts.
@@ -247,7 +247,7 @@ ln -s pts-subscribe %{buildroot}%{_bindir}/pts-unsubscribe
 %defattr(-,root,root)
 %doc debian/copyright
 %{_bindir}/*
-/usr/lib/%{name}
+%{_prefix}/lib/%{name}
 %{python_sitelib}/%{name}/
 %{python_sitelib}/%{name}-*.egg-info/
 %{_datadir}/%{name}
